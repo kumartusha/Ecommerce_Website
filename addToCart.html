@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript eCommerce Add To Cart Page</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Jost:wght@300;400;500;700&family=Poppins:wght@200;300;400;600&family=Quicksand:wght@300;400;500;600;700&family=Urbanist:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="shortcut icon" href="https://img.freepik.com/free-vector/hand-drawn-web-developers_23-2148819604.jpg" type="image/x-icon">
+    <script src='https://kit.fontawesome.com/7a4b62b0a4.js' crossorigin='anonymous'></script>
+  </head>
+  <body>
+    <!-- ========== Start Navbar ========== -->
+    <!-- <header class="section-navbar">
+      <section class="top-txt">
+        <div class="head container">
+          <div class="head_txt">
+            <p>Free Shipping, 30-day return or refund gurantee.</p>
+          </div>
+          <div class="sign_in_up">
+            <a href="#">SIGN IN</a>
+            <a href="#">SIGN UP</a>
+          </div>
+        </div>
+      </section>
+      
+           <div class="container">
+            <div class="navbar-brand">
+              <a href="./index.html">
+                <img src="./public/images/log2.png" 
+                alt="Tushar Ecommerce Website"
+                class="logo"
+                width="80%"
+                height="auto"
+                >
+              </a>
+            </div>
+            
+            <i class="fas fa-bars" id="toggleIcon" onclick="showMenu()"></i>
+            
+            <div class="navbar">
+              <ul>
+                <li class="nav-item">
+                  <a href="./index.html" class="nav-link">Home</a>
+                </li>
+              
+                <li class="nav-item">
+                  <a href="./about.html" class="nav-link">About</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a href="./products.html" class="nav-link">Products</a>
+                </li>
+      
+                <li class="nav-item">
+                  <a href="./contact.html" class="nav-link">Contact</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a href="./addToCart.html" class="nav-lin add-to-cart-button" id="cartValue">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fas fa-shopping-cart">0</i>
+                  </a>
+                </li>
+                
+              </ul>
+            </div>
+           </div>
+      
+           <div class="menu">
+            <ul>
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link" onclick="showMenu()">Home</a>
+              </li>
+            
+              <li class="nav-item">
+                <a href="./about.html" class="nav-link" onclick="showMenu()">About</a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="./products.html" class="nav-link" onclick="showMenu()">Products</a>
+              </li>
+      
+              <li class="nav-item">
+                <a href="./contact.html" class="nav-link" onclick="showMenu()">Contact</a>
+              </li>
+      
+               <li class="nav-item">
+                  <a href="./addToCart.html" class="nav-lin add-to-cart-button" id="cartValue" onclick="showMenu()">
+                      <i class="fas fa-shopping-cart">Cart</i>
+                  </a>
+               </li>
+      
+            </ul>
+          </div>
+      </header>  -->
+    
+    <header class="section-navbar">
+      <script type="module" src="./javascript/header.js"></script>
+    </header>
+    
+    <!-- ========== End Navbar ========== -->
+
+    <section class="addToCartElement">
+      <div class="container">
+        <section>
+          <div id="productCartContainer"></div>
+        </section>
+
+        <section class="productCartTotalElem">
+          <div class="productCartTotalElement">
+            <p>Selected Offer Summary</p>
+            <div class="productOrderTotal">
+              <div>
+                <p>Sub Total:</p>
+                <p class="productSubTotal">0</p>
+              </div>
+              <div>
+                <p>Tax:</p>
+                <p class="productTax">$50</p>
+              </div>
+              <hr />
+              <div>
+                <p>Final Total:</p>
+                <p class="productFinalTotal">0</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Template for a product -->
+    <template id="productCartTemplate">
+      <div class="cards" id="cardValue">
+        <article class="information [ card ]">
+          <div>
+            <span class="category"></span>
+          </div>
+          <div class="imageContainer">
+            <img class="productImage" src="" alt="" />
+          </div>
+
+          <h2 class="productName"></h2>
+
+          <p class="productPrice"></p>
+
+          <div class="stockElement">
+            <button class="cartIncrement">+</button>
+            <p class="productQuantity" data-quantity="1">1</p>
+            <button class="cartDecrement">-</button>
+          </div>
+
+          <!-- <button class="add-to-cart-button">Add To Cart</button> -->
+          <button class="add-to-cart-button remove-to-cart-button">
+            Remove
+          </button>
+        </article>
+      </div>
+    </template>
+
+    <!-- ========== Start footer Section ========== -->
+    <footer class="section-footer">
+      <script type="module" src="./javascript/footer.js"></script>
+    </footer>
+    <!-- ========== End footer Section ========== -->
+
+    <script type="module" src="./javascript/showAddToCartCards.js"></script>
+
+    <script>
+      
+      function showMenuBar(){
+        
+              const toggleIconEl = document.querySelector("#toggleIcon");
+              const colorChange = document.querySelector(".fa-times");
+        const menuBarEl = document.querySelector(".menu");
+      //  console.log(menuBarEl);
+        menuBarEl.classList.toggle("showMenu");
+      if(toggleIconEl.classList.contains("fa-bars")){
+        toggleIconEl.classList.add("fa-times")
+        toggleIconEl.classList.remove("fa-bars")
+      }else{
+        toggleIconEl.classList.remove("fa-times")
+        toggleIconEl.classList.add("fa-bars")
+       
+      }
+      }
+      </script>
+  </body>
+</html>
